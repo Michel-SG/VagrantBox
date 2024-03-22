@@ -13,4 +13,4 @@
 8- vagrant package --output boxname.box
 
 ** Créer un vagrant file pour automatiser l'infrastructure
-9- vagrant init -m (crée un fichier vagrant minimaliste)
+9- vagrant init ubuntu/trusty64 -m (crée un fichier vagrant minimaliste)
