@@ -8,3 +8,6 @@
 4- exit (pour sortir dans la VM)
 6- vagrant halt (pour arrêter la VM)
 7- vagrant destroy (supprimer la VM)
+
+** Créer une vbox pour une utilisation publique
+8- vagrant package --output boxname.box
