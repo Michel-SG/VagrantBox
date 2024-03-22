@@ -1,0 +1,10 @@
+1- Télécharger et installer virtual box
+2- Télécharger et installer vagrant
+
+** Commandes vagrant
+1- vagrant init ubuntu/trusty64 (initialiser la VM) ou alors : vagrant init ubuntu/trusty64 --box-version 20190514.0.0 (pour une version spécifique)
+2- vagrant up (mettre la VM à disposition avec toutes les fonctionnalités en téléchargant l'image souhaitée)
+3- vagrant ssh (se connecter)
+4- exit (pour sortir dans la VM)
+6- vagrant halt (pour arrêter la VM)
+7- vagrant destroy (supprimer la VM)
