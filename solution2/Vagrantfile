@@ -1,0 +1,39 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+IPLB = "10.0.0.10"
+IPWEB1 = "10.0.0.11"
+IPWEB2 = "10.0.0.12"
+CPU = 1
+RAM = 1024
+Vagrant.configure("2") do |config|
+  config.vm.provision "shell", inline: "echo Hello"
+  config.vm.define "lb" do |lb|
+    lb.vm.box = "ubuntu/xenial64"
+    lb.vm.network "private_network", ip: IPLB
+    lb.vm.hostname = "michel"
+    lb.vm.provision "file", source: "~/Lab-1/labvagrant/index.html", destination: "/tmp/index.html"
+    lb.vm.provision "file", source: "~/Lab-1/nginx/nginx.conf", destination: "/home/vagrant/nginx.conf"
+    lb.vm.provision "shell", path: "~/Lab-1/nginx/nginx.sh"
+  end
+  config.vm.define "web1" do |web1|
+    web1.vm.box = "ubuntu/xenial64"
+    web1.vm.network "private_network", ip: IPWEB1
+    web1.vm.hostname = "michel1"
+    web1.vm.provision "file", source: "~/Lab-1/labvagrant/index1.html", destination: "/tmp/index1.html"
+    web1.vm.provision "file", source: "~/Lab-1/nginx/nginx.conf", destination: "/home/vagrant/nginx.conf"
+    web1.vm.provision "shell", path: "~/Lab-1/nginx/nginx1.sh"
+  end
+  config.vm.define "web2" do |web2|
+    web2.vm.box = "ubuntu/xenial64"
+    web2.vm.network "private_network", ip: IPWEB2
+    web2.vm.hostname = "michel2"
+    web2.vm.provision "file", source: "~/Lab-1/labvagrant/index2.html", destination: "/tmp/index2.html"
+    web2.vm.provision "file", source: "~/Lab-1/nginx/nginx.conf", destination: "/home/vagrant/nginx.conf"
+    web2.vm.provision "shell", path: "~/Lab-1/nginx/nginx2.sh"
+  end
+  config.vm.provider "virtualbox" do |v|
+    v.memory = RAM
+    v.cpus = CPU
+  end
+end
+
