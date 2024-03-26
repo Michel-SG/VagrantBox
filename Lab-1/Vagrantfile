@@ -6,7 +6,7 @@ IP = "10.0.0.10"
 Vagrant.configure("2") do |config|
   config.vm.box = "geerlingguy/centos7"
   config.vm.provision "shell", inline: "echo Hello"
-  config.vm.provision "shell", path: "~/Lab-1/Lab-2/configshell/docker.sh"
+  config.vm.provision "shell", path: "~/Lab-1/configshell/docker.sh"
   config.vm.hostname = "michel"
   config.vm.network "private_network", ip: IP 
   config.vm.provider "virtualbox" do |v|
